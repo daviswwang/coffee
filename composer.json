@@ -1,0 +1,39 @@
+{
+  "name": "coffee/coffee",
+  "description": "coffee test",
+  "type": "project",
+  "keywords": ["php","fast","framework","restful"],
+  "homepage": "http://www.test.net",
+  "license" : "GPL-3.0+",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "tianya",
+      "email": "huakaiquan@qq.com",
+      "homepage" : "https://github.com/naofbear/coffee",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3",
+    "filp/whoops": "*"
+  },
+  "autoload": {
+    "files": [
+    ],
+    "psr-4": {
+      "coffee\\": "vendor/coffee",
+      "Whoops\\": "vendor/services/whoops/src/Whoops",
+      "Illuminate\\Database\\" : "vendor/drives/database/eloquent/database",
+      "Illuminate\\Support\\" : "vendor/drives/database/eloquent/support",
+      "Illuminate\\Container\\" : "vendor/drives/database/eloquent/container",
+      "Illuminate\\Contracts\\" : "vendor/drives/database/eloquent/contracts",
+      "Psr\\Container\\" : "vendor/drives/database/eloquent/psr/container/src",
+      "Doctrine\\" : "vendor/drives/database/eloquent/doctrine/inflector/lib/Doctrine",
+      "Carbon\\" : "vendor/drives/database/eloquent/nesbot/carbon/src/Carbon",
+      "Symfony\\Polyfill\\Mbstring\\" : "vendor/drives/database/eloquent/symfony/polyfill-mbstring",
+      "Symfony\\Component\\Translation\\" : "vendor/drives/database/eloquent/symfony/translation"
+    }
+  }
+
+}
