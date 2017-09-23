@@ -32,7 +32,8 @@
       "Doctrine\\" : "vendor/drives/database/eloquent/doctrine/inflector/lib/Doctrine",
       "Carbon\\" : "vendor/drives/database/eloquent/nesbot/carbon/src/Carbon",
       "Symfony\\Polyfill\\Mbstring\\" : "vendor/drives/database/eloquent/symfony/polyfill-mbstring",
-      "Symfony\\Component\\Translation\\" : "vendor/drives/database/eloquent/symfony/translation"
+      "Symfony\\Component\\Translation\\" : "vendor/drives/database/eloquent/symfony/translation",
+      "Klein\\" : "vendor/services/klein/src/Klein"
     }
   }
 
