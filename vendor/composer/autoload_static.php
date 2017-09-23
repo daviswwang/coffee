@@ -24,6 +24,10 @@ class ComposerStaticInit6a6d632d67e4f39705df4f1767d24dc8
         array (
             'Psr\\Container\\' => 14,
         ),
+        'K' => 
+        array (
+            'Klein\\' => 6,
+        ),
         'I' => 
         array (
             'Illuminate\\Support\\' => 19,
@@ -61,6 +65,10 @@ class ComposerStaticInit6a6d632d67e4f39705df4f1767d24dc8
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/drives/database/eloquent/psr/container/src',
+        ),
+        'Klein\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/services/klein/src/Klein',
         ),
         'Illuminate\\Support\\' => 
         array (

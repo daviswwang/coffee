@@ -11,6 +11,7 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/drives/database/eloquent/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/drives/database/eloquent/symfony/translation'),
     'Psr\\Container\\' => array($vendorDir . '/drives/database/eloquent/psr/container/src'),
+    'Klein\\' => array($vendorDir . '/services/klein/src/Klein'),
     'Illuminate\\Support\\' => array($vendorDir . '/drives/database/eloquent/support'),
     'Illuminate\\Database\\' => array($vendorDir . '/drives/database/eloquent/database'),
     'Illuminate\\Contracts\\' => array($vendorDir . '/drives/database/eloquent/contracts'),
