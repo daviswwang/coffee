@@ -22,7 +22,8 @@
     ],
     "psr-4": {
       "coffee\\": "vendor/coffee",
-      "Whoops\\": "vendor/services/whoops/src/Whoops",
+      "services" : "vendor/services",
+      "Whoops\\": "vendor/component/whoops/src/Whoops",
       "Illuminate\\Database\\" : "vendor/drives/database/eloquent/database",
       "Illuminate\\Support\\" : "vendor/drives/database/eloquent/support",
       "Illuminate\\Container\\" : "vendor/drives/database/eloquent/container",
@@ -32,7 +33,7 @@
       "Carbon\\" : "vendor/drives/database/eloquent/nesbot/carbon/src/Carbon",
       "Symfony\\Polyfill\\Mbstring\\" : "vendor/drives/database/eloquent/symfony/polyfill-mbstring",
       "Symfony\\Component\\Translation\\" : "vendor/drives/database/eloquent/symfony/translation",
-      "Klein\\" : "vendor/services/klein/src/Klein"
+      "Klein\\" : "vendor/component/klein/src/Klein"
     }
   }
 

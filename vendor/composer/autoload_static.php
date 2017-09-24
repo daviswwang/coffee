@@ -52,7 +52,7 @@ class ComposerStaticInit6a6d632d67e4f39705df4f1767d24dc8
         ),
         'Whoops\\' => 
         array (
-            0 => __DIR__ . '/..' . '/services/whoops/src/Whoops',
+            0 => __DIR__ . '/..' . '/component/whoops/src/Whoops',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -68,7 +68,7 @@ class ComposerStaticInit6a6d632d67e4f39705df4f1767d24dc8
         ),
         'Klein\\' => 
         array (
-            0 => __DIR__ . '/..' . '/services/klein/src/Klein',
+            0 => __DIR__ . '/..' . '/component/klein/src/Klein',
         ),
         'Illuminate\\Support\\' => 
         array (
