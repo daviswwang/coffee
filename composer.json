@@ -19,10 +19,11 @@
   },
   "autoload": {
     "files": [
+      "vendor/services/functions.php"
     ],
     "psr-4": {
       "coffee\\": "vendor/coffee",
-      "services" : "vendor/services",
+      "services\\" : "vendor/services",
       "Whoops\\": "vendor/component/whoops/src/Whoops",
       "Illuminate\\Database\\" : "vendor/drives/database/eloquent/database",
       "Illuminate\\Support\\" : "vendor/drives/database/eloquent/support",
