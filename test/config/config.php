@@ -11,5 +11,13 @@ return [
     'api_output'=>'json',
 
     //约束一个访问规则 例如 api 项目
-    'restriction'=>'/[:api]/[:version]/[:action]'
+    'restriction'=>'/[:api]/[:version]/[:action]',
+
+    //应用名称
+    'app_name'=>'Test',
+
+    //注册自定义命名空间
+    'namespace'=>[
+        "test\\"=>C_ITEM
+    ]
 ];

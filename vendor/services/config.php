@@ -8,15 +8,14 @@ class config
 {
     public static function set($filename = '')
     {
-        //设置文件名
-        if($filename == 'config') $fun = $filename; else $fun = 'config_'.$filename;
-
         //设置配置路径
         $loadFile = C_ITEM.'config'.DIRECTORY_SEPARATOR.$filename.C_EXT;
 
         //检测配置文件是否存在
         if(!file_exists($loadFile))
             throw new interiorError("config $filename is not exists.");
+
+        $fun = $filename == 'config' ? $filename : $filename.'_config';
 
         //注入服务池
         return di()->{'set'.$fun}(di()['loader']->fileHaveReturn($loadFile));

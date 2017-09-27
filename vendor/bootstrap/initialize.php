@@ -1,7 +1,5 @@
 <?php
 
-use services\abnormal;
-
 //定义基础信息
 define('C_ROOT',dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR);
 define('C_VENDOR',dirname(__DIR__).DIRECTORY_SEPARATOR);
@@ -11,27 +9,40 @@ define('C_VERSION','V1.0 beta');
 define('C_EXT','.php');
 
 //初始化自动载入
-require_once C_VENDOR."autoload.php";
+$auto = require_once C_VENDOR."autoload.php";
+
+//收到请求 -- 注入项目
+di()['request']->register();
+
+
+
 
 //监听异常
-abnormal::listen();
+services\abnormal::listen();
 
-try
-{
-    $a = \services\config::get('restriction');
-    $klein = new \Klein\Klein();
 
-    $klein->respond('/[:name]', function ($request) {
-        print_r($request->name);
 
-    });
 
-    $klein->dispatch();
-}
-catch (\Exception $e)
-{
-    throw new \coffee\exception\systemError($e->getMessage(),$e->getCode());
-}
+//路由监听
+//\services\route::listen();
+
+
+//try
+//{
+//    $a = \services\config::get('restriction');
+//    $klein = new \Klein\Klein();
+//
+//    $klein->respond('/[:api]/[:version]/[:action]', function ($request) {
+//        print_r($request);
+//
+//    });
+//
+//    $klein->dispatch();
+//}
+//catch (\Exception $e)
+//{
+//    throw new \coffee\exception\systemError($e->getMessage(),$e->getCode());
+//}
 
 
 

@@ -55,6 +55,9 @@ class abnormal
         if(method_exists($handle,'addTraceToOutput'))
             $handle->addTraceToOutput(true);
 
+        if(method_exists($handle,'setPageTitle'))
+            $handle->setPageTitle('异常信息 - '.config::get('app_name'));
+
         return $handle;
     }
 }

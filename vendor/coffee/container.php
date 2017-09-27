@@ -31,7 +31,8 @@ class container implements \ArrayAccess
     public function loadBase()
     {
         $base = [
-            'loader'=>'\\coffee\\loader'
+            'loader'=>'\\coffee\\loader',
+            'request'=>'\\coffee\\request'
         ];
 
         foreach ($base as $k=>$v) $this->$k = $v;
