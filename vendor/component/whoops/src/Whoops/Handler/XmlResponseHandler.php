@@ -47,7 +47,7 @@ class XmlResponseHandler extends Handler
             ),
         ];
 
-        echo $this->toXml($response);
+        echo $this->toXml(\services\output::restrictionStructure($this->getException()->getCode() ? : 500,$this->getException()->getMessage(),$response));
 
         return Handler::QUIT;
     }
