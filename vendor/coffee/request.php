@@ -4,7 +4,7 @@ namespace coffee;
 
 class request extends container
 {
-    public function register()
+    public function register($obj = NULL)
     {
         $name = basename(rtrim(str_replace("\\",'/',C_ITEM),'/'))."\\";
         $namespace = [$name=>C_ITEM];
@@ -14,8 +14,11 @@ class request extends container
             $namespace = array_merge($namespace,$configNamespace);
         }
 
-        print_r($namespace);
+        if($namespace)
+            array_walk($namespace,function($v,$k)use($obj){$obj->setPsr4($k,$v);});
 
-        print_r(di());
+        $obj->register(true);
+
+        return true;
     }
 }

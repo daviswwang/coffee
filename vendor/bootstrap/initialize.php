@@ -12,17 +12,15 @@ define('C_EXT','.php');
 $auto = require_once C_VENDOR."autoload.php";
 
 //收到请求 -- 注入项目
-di()['request']->register();
+di()['request']->register($auto);
 
 //监听异常
-services\abnormal::listen();
+\services\abnormal::listen();
 
 //监听中间件
-//\services\middleware::listen();
+\services\middleware::listen();
 
 //路由监听
 //\services\route::listen();
-
-//监听防火墙
 
 //监听响应
