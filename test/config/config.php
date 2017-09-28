@@ -8,7 +8,7 @@ return [
     'format'=>'api',
 
     //api format 输出格式  format 设置api 此设置才生效
-    'api_output'=>'xml',
+    'api_output'=>'json',
 
     //约束一个访问规则 例如 api 项目
     'restriction'=>'/[:api]/[:version]/[:action]',

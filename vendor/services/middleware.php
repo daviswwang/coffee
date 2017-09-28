@@ -2,6 +2,8 @@
 
 namespace services;
 
+use coffee\exception\middlewareError;
+
 class middleware
 {
     const BGR = 'BEFORE_GET_ROUTE';
@@ -43,8 +45,53 @@ class middleware
         //判断是否启用中间件
         if(config::get('enable_middleware') === true)
         {
-
+            self::$services = array_merge_recursive(self::$services,config::get('',basename(str_replace("\\",'/',__CLASS__))));
+            self::$enable   = true;
         }
+
+        return true;
+    }
+
+    public static function callback($type = self::BGR)
+    {
+        if(!self::$services[$type]) return false;
+
+        array_walk(self::$services[$type],function($v,$k)
+        {
+            if(!class_exists($k)) throw new middlewareError("class $k is not exists.");
+
+            if(!isset($v['exec_func']) || empty($v['exec_func']))
+                throw new middlewareError("please set the default execution method at key : {$v['exec_func']}");
+
+            if(!isset($v['conf_info']) || empty($v['conf_info']))
+                $object = new $k();
+            else
+            {
+                $conf = config::get('',$v['conf_info']);
+                $object = new $k($conf);
+            }
+
+            if(!method_exists($object,$v['exec_func']))
+                throw new middlewareError("call to undefined function {$v['exec_func']}");
+
+            if(!isset($v['call_pass']) || empty($v['call_pass']))
+                $res = call_user_func([$object,$v['exec_func']]);
+            else
+            {
+                if(is_array($v['call_pass']))
+                    $res = call_user_func_array([$object,$v['exec_func']],$v['call_pass']);
+                else
+                    $res = call_user_func([$object,$v['exec_func']],$v['call_pass']);
+            }
+
+            if($res !== true)
+            {
+                $note = (is_string($res) ? $res : ($v['throw_msg'] ? : 'execute error.'));
+                raise($note , 600 );
+            }
+        });
+
+        return true;
     }
 
     private static function loadCoreMiddleware()
@@ -52,16 +99,14 @@ class middleware
         //是否载入防火墙配置
         if(config::get('enable_firewall') === true)
         {
-            self::$services = array_merge(["\\middleware\\test"=>[
-                'exec_func'=>'exec',
+            self::$services[self::BGR]["\\middleware\\firewall"] = [
+                'exec_func'=>'execute',
                 'conf_info'=>'firewall',
                 'throw_msg'=>'访问被禁止, Access forbid.',
                 'call_pass'=>'',
-            ]],self::$services[self::BGR]);
+            ];
         }
 
         return true;
     }
-
-
 }

@@ -14,7 +14,7 @@ class output
 
         return [
             $restrictionStructure['code_name']=>$code,
-            $restrictionStructure['note_name']=>$note,
+            $restrictionStructure['note_name']=>interpret::language($note),
             $restrictionStructure['data_name']=>$data
         ];
     }
