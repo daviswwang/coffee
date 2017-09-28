@@ -15,6 +15,10 @@ class ComposerStaticInit6a6d632d67e4f39705df4f1767d24dc8
         array (
             'services\\' => 9,
         ),
+        'm' => 
+        array (
+            'middleware\\' => 11,
+        ),
         'c' => 
         array (
             'coffee\\' => 7,
@@ -57,6 +61,10 @@ class ComposerStaticInit6a6d632d67e4f39705df4f1767d24dc8
         'services\\' => 
         array (
             0 => __DIR__ . '/..' . '/services',
+        ),
+        'middleware\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/component/middleware',
         ),
         'coffee\\' => 
         array (

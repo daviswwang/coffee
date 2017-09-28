@@ -24,6 +24,7 @@
     "psr-4": {
       "coffee\\": "vendor/coffee",
       "services\\" : "vendor/services",
+      "middleware\\" : "vendor/component/middleware",
       "Whoops\\": "vendor/component/whoops/src/Whoops",
       "Illuminate\\Database\\" : "vendor/drives/database/eloquent/database",
       "Illuminate\\Support\\" : "vendor/drives/database/eloquent/support",

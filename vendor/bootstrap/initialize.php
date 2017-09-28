@@ -17,6 +17,8 @@ di()['request']->register($auto);
 //监听异常
 \services\abnormal::listen();
 
+throw new \coffee\exception\systemError('1111');
+
 //监听中间件
 \services\middleware::listen();
 

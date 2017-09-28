@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'services\\' => array($vendorDir . '/services'),
+    'middleware\\' => array($vendorDir . '/component/middleware'),
     'coffee\\' => array($vendorDir . '/coffee'),
     'Whoops\\' => array($vendorDir . '/component/whoops/src/Whoops'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/drives/database/eloquent/symfony/polyfill-mbstring'),
