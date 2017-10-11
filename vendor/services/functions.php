@@ -2,9 +2,9 @@
 
 use coffee\container;
 
-function di()
+function di($object = NULL)
 {
-    return container::initialize();
+    if($object) return container::initialize()[$object]; else return container::initialize();
 }
 
 function raise($note = '' , $code = 0 , $data = [])

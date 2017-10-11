@@ -14,7 +14,7 @@ class firewall
 
     public function execute()
     {
-        print_r($this->config);
+//        print_r($this->config);
         return false;
     }
 }

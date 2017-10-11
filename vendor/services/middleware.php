@@ -54,7 +54,7 @@ class middleware
 
     public static function callback($type = self::BGR)
     {
-        if(!self::$services[$type]) return false;
+        if(!self::$services[$type] || self::$enable === false) return false;
 
         array_walk(self::$services[$type],function($v,$k)
         {

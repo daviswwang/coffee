@@ -25,7 +25,7 @@ return [
     'enable_middleware'=>true,
 
     //是否启用防火墙功能
-    'enable_firewall'=>true,
+    'enable_firewall'=>false,
 
     //约束一个输出结构体
     'restriction_structure'=>[

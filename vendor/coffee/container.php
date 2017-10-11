@@ -136,7 +136,8 @@ class container implements \ArrayAccess
     }
 
     //array 销毁服务
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset)
+    {
         unset($this->servicesPool[$offset]);
     }
 

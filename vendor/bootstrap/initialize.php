@@ -1,5 +1,7 @@
 <?php
 
+use \services\abnormal , \services\middleware , \services\route;
+
 //定义基础信息
 define('C_ROOT',dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR);
 define('C_VENDOR',dirname(__DIR__).DIRECTORY_SEPARATOR);
@@ -11,19 +13,16 @@ define('C_EXT','.php');
 //初始化自动载入
 $auto = require_once C_VENDOR."autoload.php";
 
-//收到请求 -- 注入项目
-di()['request']->register($auto);
+//收到请求 -- 注册应用
+di('request')->register($auto);
 
 //监听异常
-\services\abnormal::listen();
+abnormal::listen();
 
 //监听中间件
-\services\middleware::listen();
-
-//中间件操作
-\services\middleware::callback(\services\middleware::BGR);
+middleware::listen();
 
 //路由监听
-//\services\route::listen();
+route::listen();
 
 //监听响应

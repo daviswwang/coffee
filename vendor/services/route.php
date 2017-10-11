@@ -12,30 +12,42 @@ class route
             self::$instance = new \Klein\Klein();
 
         config::get('','route');
-
-//        self::$instance->respond('*',function($rq , $rs , $s){
-//            print_r($rq);
-//            print_r($rs);
-//            print_r($s);
+//        self::$instance->respond('/[:controller]?/[:action]?',function($request){
+//            print_r($request->paramsNamed());
+//            return true;
 //        });
+//
 
+        echo password_hash('root#pass@rp',PASSWORD_BCRYPT);exit;
+        self::$instance->respond('*',function($rq){
+            print_r("\\services\\route::".strtolower($rq->method()));
+//            return call_user_func_array(,[$rq->pathname]);
+        });
+
+
+//
         try
         {
             self::$instance->dispatch();
         }
         catch (\Exception $e)
         {
-            throw new \Exception('eeeee');
+            throw new \Exception($e->getMessage());
         }
+
+        //中间件操作
+        middleware::callback(middleware::BGR);
 
     }
 
     public static function get($uri = '' , $params = NULL)
     {
-        $a = self::$instance->respond('GET',$uri,function()use($params){
-            print_r($params);
-            throw new \Exception('aaaaa');
-        });
+        print_r($uri);
+//        return;
+//        $a = self::$instance->respond('GET',$uri,function()use($params){
+//            print_r($params);
+//            throw new \Exception('aaaaa');
+//        });
     }
 
     public static function post($uri = '' , $params = [])
