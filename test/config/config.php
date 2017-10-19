@@ -26,6 +26,11 @@ return [
         "test\\"=>C_ITEM
     ],
 
+    //默认配置
+    'default'=>[
+            
+    ],
+
     //api 配置
     'api_config'=>[
 

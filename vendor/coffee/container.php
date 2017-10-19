@@ -32,7 +32,8 @@ class container implements \ArrayAccess
     {
         $base = [
             'loader'=>'\\coffee\\loader',
-            'request'=>'\\coffee\\request'
+            'request'=>'\\coffee\\request',
+            'reflection'=>'\\coffee\\reflection'
         ];
 
         foreach ($base as $k=>$v) $this->$k = $v;

@@ -13,9 +13,6 @@ define('C_EXT','.php');
 //初始化自动载入
 $auto = require_once C_VENDOR."autoload.php";
 
-//收到请求 -- 注册应用
-di('request')->register($auto);
-
 //监听异常
 abnormal::listen();
 

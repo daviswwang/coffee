@@ -4,6 +4,10 @@ namespace coffee;
 
 class request extends container
 {
+
+    //是否存在对应路由配置
+    private $isHasRoute = false;
+
     public function register($obj = NULL)
     {
         $name = basename(rtrim(str_replace("\\",'/',C_ITEM),'/'))."\\";
@@ -20,5 +24,10 @@ class request extends container
         $obj->register(true);
 
         return true;
+    }
+
+    public function isHasRoute()
+    {
+        return $this->isHasRoute;
     }
 }

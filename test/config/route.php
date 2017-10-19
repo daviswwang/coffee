@@ -1,4 +1,6 @@
 <?php
 
-\services\route::get('/?',[1]);
+return [
+    '/test'=>''
+];
 
