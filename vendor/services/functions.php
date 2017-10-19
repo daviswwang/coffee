@@ -18,7 +18,7 @@ function raise($note = '' , $code = 0 , $data = [])
     }
     else
     {
-        if(\services\config::get('api_output') == 'xml')
+        if(\services\config::get('api_config.output') == 'xml')
         {
             echo \services\output::xml($note,$code,$data);
         }

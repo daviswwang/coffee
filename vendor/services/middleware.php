@@ -43,9 +43,9 @@ class middleware
         self::loadCoreMiddleware();
 
         //判断是否启用中间件
-        if(config::get('enable_middleware') === true)
+        if(config::get('middleware') === true)
         {
-            self::$services = array_merge_recursive(self::$services,config::get('',basename(str_replace("\\",'/',__CLASS__))));
+            self::$services = array_merge_recursive(self::$services,config::get('middleware_config'));
             self::$enable   = true;
         }
 
@@ -67,7 +67,7 @@ class middleware
                 $object = new $k();
             else
             {
-                $conf = config::get('',$v['conf_info']);
+                $conf = is_array($v['conf_info']) ? $v['conf_info'] : config::get('',$v['conf_info']);
                 $object = new $k($conf);
             }
 
@@ -97,11 +97,11 @@ class middleware
     private static function loadCoreMiddleware()
     {
         //是否载入防火墙配置
-        if(config::get('enable_firewall') === true)
+        if(config::get('firewall') === true)
         {
             self::$services[self::BGR]["\\middleware\\firewall"] = [
                 'exec_func'=>'execute',
-                'conf_info'=>'firewall',
+                'conf_info'=>config::get('firewall_config'),
                 'throw_msg'=>'访问被禁止, Access forbid.',
                 'call_pass'=>'',
             ];

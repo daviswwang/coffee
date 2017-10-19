@@ -52,6 +52,21 @@ class config
 
         if(!$config) return [];
 
-        if($key && isset($config[$key])) return $config[$key]; else return $config;
+        if($key)
+        {
+            if(strstr($key,'.'))
+            {
+                foreach (explode('.',$key) as $v)
+                {
+                    if(!isset($config[$v])) continue;
+
+                    $config = $config[$v];
+                }
+            }
+            elseif(isset($config[$key])) return $config[$key];
+
+        }
+
+        return $config;
     }
 }

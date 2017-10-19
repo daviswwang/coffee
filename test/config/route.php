@@ -1,4 +1,4 @@
 <?php
 
-//\services\route::get('/?',[1]);
+\services\route::get('/?',[1]);
 

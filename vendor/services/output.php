@@ -6,7 +6,7 @@ class output
 {
     public static function restrictionStructure($code = 0 , $note = '', $data = [])
     {
-        $restrictionStructure = config::get('restriction_structure') ? : [
+        $restrictionStructure = config::get('api_config.restriction_structure') ? : [
             'code_name'=>'code',
             'note_name'=>'note',
             'data_name'=>'data'

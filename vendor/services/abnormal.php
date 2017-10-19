@@ -37,7 +37,7 @@ class abnormal
     {
         if($format == 'api')
         {
-            if(config::get('api_output') == 'xml')
+            if(config::get('api_config.output') == 'xml')
                 $handle = new XmlResponseHandler();
             else
                 $handle = new JsonResponseHandler();
