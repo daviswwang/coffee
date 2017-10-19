@@ -23,12 +23,18 @@ return [
 
     //注册自定义命名空间
     'namespace'=>[
-        "test\\"=>C_ITEM
+//        "test\\"=>C_ITEM
     ],
 
     //默认配置
     'default'=>[
-            
+        'class'=>'index',
+        'action'=>'home',
+        
+        '404'=>[
+            'view'=>'',
+            'note'=>'404 file is not found.',
+        ]
     ],
 
     //api 配置

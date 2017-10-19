@@ -54,17 +54,7 @@ class config
 
         if($key)
         {
-            if(strstr($key,'.'))
-            {
-                foreach (explode('.',$key) as $v)
-                {
-                    if(!isset($config[$v])) continue;
-
-                    $config = $config[$v];
-                }
-            }
-            elseif(isset($config[$key])) return $config[$key];
-
+            $config = parse::get_config_by_dot($key,$config);
         }
 
         return $config;

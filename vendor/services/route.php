@@ -18,66 +18,34 @@ class route
         //收到请求 -- 注册应用
         di('request')->register($auto);
 
-        print_r(parse::get_request_path_info());
-//
-//        if(!self::$instance)
-//            self::$instance = new \Klein\Klein();
-
         if(!self::$config)
             self::$config = config::get('','route');
 
-//        self::parse_request_method();
-    }
-
-    private static function parse_request_method()
-    {
-        if(self::$config)
+        //触发NotFound
+        if(self::match_config_route() === false && self::match_path_info() === false)
         {
-            $method = ['GET','POST'];
-            $params = [];
-
-            foreach (self::$config as $k=>$v)
-            {
-                if(is_array($v))
-                {
-                    if(isset($v['method'])) $method = $v['method'];
-                    $params = $v;
-                }
-                elseif(is_string($v))
-                {
-                    if(strstr($v,'#'))
-                    {
-                        $t = explode('#',$v);
-                        $method = $t[0];
-                        $params = $t[1];
-                    }
-                }
-
-                self::$instance->respond($method,$k,function($request,$response,$service,$app)use($params){
-                    di('reflection')->object(di('request'))->setPrivateAttribute('isHasRoute',true);
-                    route::parse_request_route($request,$response,$service,$app,$params);
-                });
-
-                var_dump(self::$instance->routes->cloneEmpty()->isEmpty());
-            }
+            middleware::callback(middleware::BNF);
+            self::trigger_not_found();
+            middleware::callback(middleware::ANF);
         }
-//        else
-//        {
-//            if(di('request')->isHasRoute() === false)
-//            {
-//                self::$instance->respond(['GET','POST'],'*',function($request,$response,$service,$app){
-//                    print_r(1111);
-//                });
-//            }
-//
-//            self::$instance->dispatch();
-//        }
-
-
-
     }
 
-    public static function parse_request_route($request , $response , $service , $app , $params)
+    private static function match_config_route()
+    {
+        if(isset(self::$config[parse::get_request_path_info()]))
+        {
+            $params = self::match_path_info(self::$config[parse::get_request_path_info()]);
+        }
+    }
+
+    private static function match_path_info($path_info = '')
+    {
+        if(!$path_info) $path_info = parse::get_request_path_info();
+
+        print_r($path_info);
+    }
+
+    private static function trigger_not_found()
     {
 
     }
