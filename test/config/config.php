@@ -10,7 +10,7 @@ return [
     'format'=>'api',
 
     //应用名称
-    'app_name'=>'Test',
+    'app_name'=>'test',
 
     //项目目录
     'app_directory'=>'app',
@@ -29,11 +29,13 @@ return [
     //默认配置
     'default'=>[
         'class'=>'index',
-        'action'=>'home',
+        'action'=>'index',
         
         '404'=>[
             'view'=>'',
             'note'=>'404 file is not found.',
+            'class'=>'_empty',
+            'action'=>'index'
         ]
     ],
 
@@ -80,11 +82,6 @@ return [
 
         //触发NotFound之前执行
         middleware::BNF=>[
-
-        ],
-
-        //触发NotFound之后执行
-        middleware::ANF=>[
 
         ]
     ],

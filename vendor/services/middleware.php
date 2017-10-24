@@ -16,8 +16,6 @@ class middleware
 
     const BNF = 'BEFORE_NOT_FOUND';
 
-    const ANF = 'AFTER_NOT_FOUND';
-
 
     private static $services = [
 
@@ -29,9 +27,7 @@ class middleware
 
         'AFTER_EXEC_APP'    =>[],
 
-        'BEFORE_NOT_FOUND'  =>[],
-
-        'AFTER_NOT_FOUND'   =>[],
+        'BEFORE_NOT_FOUND'  =>[]
         
     ];
 

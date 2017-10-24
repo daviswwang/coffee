@@ -45,6 +45,7 @@ class parse
             }
         }
         elseif(isset($config[$key])) $config = $config[$key];
+        else $config = [];
 
         return $config;
     }

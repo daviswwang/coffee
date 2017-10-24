@@ -5,8 +5,7 @@ namespace coffee;
 class request extends container
 {
 
-    //是否存在对应路由配置
-    private $isHasRoute = false;
+    private $service = [];
 
     public function register($obj = NULL)
     {
@@ -26,8 +25,28 @@ class request extends container
         return true;
     }
 
-    public function isHasRoute()
+    public function getNamespace()
     {
-        return $this->isHasRoute;
+        return isset($this->service['namespace']) ? $this->service['namespace'] : NULL;
+    }
+
+    public function getClass()
+    {
+        return isset($this->service['class']) ? $this->service['class'] : NULL;
+    }
+
+    public function getAction()
+    {
+        return isset($this->service['action']) ? $this->service['action'] : NULL;
+    }
+
+    public function getStatus()
+    {
+        return isset($this->service['status']) ? $this->service['status'] : NULL;
+    }
+
+    public function getApplication()
+    {
+        return isset($this->service['application']) ? $this->service['application'] : NULL;
     }
 }
