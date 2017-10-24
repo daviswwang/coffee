@@ -33,6 +33,7 @@ class container implements \ArrayAccess
         $base = [
             'loader'=>'\\coffee\\loader',
             'request'=>'\\coffee\\request',
+            'response'=>'\\coffee\\response',
             'reflection'=>'\\coffee\\reflection'
         ];
 

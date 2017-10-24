@@ -1,6 +1,6 @@
 <?php
 
-use \services\abnormal , \services\middleware , \services\route , \coffee\application;
+use \services\abnormal , \services\middleware , \services\route;
 
 //定义基础信息
 define('C_ROOT',dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR);
@@ -23,4 +23,4 @@ middleware::listen();
 route::listen();
 
 //监听响应
-return application::listen();
+return di('response')->listen();

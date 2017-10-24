@@ -31,6 +31,8 @@ class route
         else
             $params = self::match_path_info();
 
+        middleware::callback(middleware::AGR);
+
         di('reflection')->object(di('request'))->setPrivateAttribute('service',$params);
     }
 

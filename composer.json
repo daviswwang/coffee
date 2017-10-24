@@ -19,7 +19,8 @@
   },
   "autoload": {
     "files": [
-      "vendor/services/functions.php"
+      "vendor/services/functions.php",
+      "vendor/drives/database/eloquent/support/helpers.php"
     ],
     "psr-4": {
       "coffee\\": "vendor/coffee",
@@ -34,8 +35,7 @@
       "Doctrine\\" : "vendor/drives/database/eloquent/doctrine/inflector/lib/Doctrine",
       "Carbon\\" : "vendor/drives/database/eloquent/nesbot/carbon/src/Carbon",
       "Symfony\\Polyfill\\Mbstring\\" : "vendor/drives/database/eloquent/symfony/polyfill-mbstring",
-      "Symfony\\Component\\Translation\\" : "vendor/drives/database/eloquent/symfony/translation",
-      "Klein\\" : "vendor/component/klein/src/Klein"
+      "Symfony\\Component\\Translation\\" : "vendor/drives/database/eloquent/symfony/translation"
     }
   }
 
