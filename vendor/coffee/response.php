@@ -19,13 +19,6 @@ class response
 
     public function run()
     {
-        //启动数据库
-        $capsule = new Capsule;
-
-        $capsule->addConnection(config::get('default','database'));
-
-        $capsule->bootEloquent();
-        
         middleware::callback(middleware::BEA);
         $this->result = call_user_func([new $this->app(),di('request')->getAction()]);
         middleware::callback(middleware::AEA);

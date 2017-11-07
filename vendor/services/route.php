@@ -94,7 +94,7 @@ class route
             }
         }
 
-        //尝试组装
+        //组装
         if(empty($class) && empty($action))
         {
             $class = config::get('default.404.class');

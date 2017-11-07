@@ -8,6 +8,6 @@ class systemError extends Exception
 {
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {
-        parent::__construct(interpret::language($message) , $code, $previous);
+        parent::__construct(interpret::language($message) , 1 + $code, $previous);
     }
 }
