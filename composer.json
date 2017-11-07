@@ -1,9 +1,9 @@
 {
   "name": "coffee/coffee",
-  "description": "coffee test",
+  "description": "I hope you can finish your code with coffee",
   "type": "project",
-  "keywords": ["php","fast","framework","restful"],
-  "homepage": "http://www.test.net",
+  "keywords": ["php","fast","framework","restful","coffee"],
+  "homepage": "http://www.php-coffee.com",
   "license" : "GPL-3.0+",
   "minimum-stability": "dev",
   "authors": [
