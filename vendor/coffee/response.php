@@ -2,8 +2,7 @@
 
 namespace coffee;
 
-use services\config;
-use services\middleware , Illuminate\Database\Capsule\Manager as Capsule;
+use services\middleware ;
 
 class response
 {

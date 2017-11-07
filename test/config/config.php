@@ -22,9 +22,7 @@ return [
     'firewall'=>true,
 
     //注册自定义命名空间
-    'namespace'=>[
-//        "test\\"=>C_ITEM
-    ],
+    'namespace'=>[ ],
 
     //默认配置
     'default'=>[
