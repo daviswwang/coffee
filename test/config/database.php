@@ -2,13 +2,15 @@
 
 return[
     'default'=>[
-        'driver'    => 'mysql',
+        'driver'    => '',
         'host'      => '',
         'database'  => '',
         'username'  => '',
         'password'  => '',
+        'port'      => 3306,
         'charset'   => 'utf8',
-        'collation' => 'utf8_general_ci',
-        'prefix'    => ''
+        'prefix'    => '',
+        'primary'   => 'id',
+        'foreign'   => '%s_id'
     ]
 ];

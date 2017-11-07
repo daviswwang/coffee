@@ -2,15 +2,15 @@
 
 namespace test\app\v1;
 
-use \Illuminate\Support\Facades\DB as db;
+use \services\db;
 
 class test
 {
     public function index()
     {
-        $a =  db::select('select * from chain_user where id = :id', [':id'=>1]);
+        $a = db::connect()->user('id',[1,2,3])->fetchAll('id');
 
+//        foreach ($a as $v){print_r($v['user']);}
         print_r($a);
-        echo 1;
     }
 }
