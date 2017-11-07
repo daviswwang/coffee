@@ -6,6 +6,6 @@ class _empty
 {
     public function index()
     {
-        exit('file is not found.');
+        raise('file is not found.',404);
     }
 }
