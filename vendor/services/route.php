@@ -47,7 +47,6 @@ class route
         {
             $class  = config::get('default.class');
             $action = config::get('default.action');
-            $namespace .= $class."\\";
         }
         else
         {
