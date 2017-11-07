@@ -8,7 +8,8 @@ class test
 {
     public function index()
     {
-        $a = db::connect()->user('id',[1,2,3])->fetchAll('id');
+        raise('error',1000);
+        return db::connect()->user('id',[1,2,3])->fetchAll('id');
 
 //        foreach ($a as $v){print_r($v['user']);}
         print_r($a);
