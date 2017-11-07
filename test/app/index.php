@@ -1,8 +1,8 @@
 <?php
 
-namespace test\app\v1;
+namespace test\app;
 
-class test
+class index
 {
     public function index()
     {
