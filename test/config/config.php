@@ -15,7 +15,7 @@ return [
     //项目目录
     'app_directory'=>'app',
     
-    //是否启用中间件功能 默认 true 配置文件在 middleware进行配置
+    //是否启用中间件功能 默认 true
     'middleware'=>true,
 
     //是否启用防火墙功能
