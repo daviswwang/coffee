@@ -6,6 +6,6 @@ class test
 {
     public function index()
     {
-        raise('this page is test/index.');
+        raise('welcome to coffee restful api framework.');
     }
 }
