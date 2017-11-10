@@ -32,16 +32,18 @@ class db
 
                 $structure = new \NotORM_Structure_Convention($set['primary'],$set['foreign'],$table = '%s',$set['prefix']);
 
-                self::$db_pool[$conf] = new \NotORM($pdo , $structure);
+                $db = new \NotORM($pdo , $structure);
 
-                self::$db_pool[$conf]->jsonAsArray = true;
-                
+                $db->jsonAsArray = true;
+
+                self::$db_pool[$conf] = $db;
+
                 break;
         }
 
         if(!isset(self::$db_pool[$conf])) throw new mysqlError('new db object is error.');
 
-        return self::$db_pool[$conf];
+        return $db;
     }
 
     public static function disconnect($conf = 'default')
