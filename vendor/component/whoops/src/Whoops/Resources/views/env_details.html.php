@@ -1,6 +1,14 @@
 <?php /* List data-table values, i.e: $_SERVER, $_GET, .... */ ?>
 <div class="details">
-  <h2 class="details-heading">Environment &amp; details:</h2>
+  <h2 class="details-heading">
+      <?php echo
+      \services\config::get('debug.switch')
+          ?
+          'Environment &amp; details:'
+          :
+          strtoupper(\services\config::get('app.name')).' ( Error ->>> 500 ) :';
+      ?>
+  </h2>
 
   <div class="data-table-container" id="data-tables">
     <?php foreach ($tables as $label => $data): ?>
@@ -31,12 +39,16 @@
 
   <?php /* List registered handlers, in order of first to last registered */ ?>
   <div class="data-table-container" id="handlers">
+  <?php if(\services\config::get('debug.switch')){?>
     <label>Registered Handlers</label>
     <?php foreach ($handlers as $i => $handler): ?>
       <div class="handler <?php echo ($handler === $handler) ? 'active' : ''?>">
         <?php echo $i ?>. <?php echo $tpl->escape(get_class($handler)) ?>
       </div>
     <?php endforeach ?>
+      <?php }else{?>
+      <label>Internal Server Error.</label>
+  <?php }?>
   </div>
 
 </div>

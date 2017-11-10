@@ -54,8 +54,25 @@ class config
 
         if($key)
         {
-            $config = parse::get_config_by_dot($key,$config);
+            $config = self::get_config_by_dot($key,$config);
         }
+
+        return $config;
+    }
+
+    private static function get_config_by_dot($key = '' , $config = [])
+    {
+        if(strstr($key,'.'))
+        {
+            foreach (explode('.',$key) as $v)
+            {
+                if(!isset($config[$v])) continue;
+
+                $config = self::get_config_by_dot($v,$config);
+            }
+        }
+        elseif(isset($config[$key])) $config = $config[$key];
+        else $config = [];
 
         return $config;
     }

@@ -56,7 +56,7 @@ class PlainTextHandler extends Handler
      * @throws InvalidArgumentException     If argument is not null or a LoggerInterface
      * @param  \Psr\Log\LoggerInterface|null $logger
      */
-    public function __construct($logger = null)
+    public function        __construct($logger = null)
     {
         $this->setLogger($logger);
     }
@@ -151,13 +151,24 @@ class PlainTextHandler extends Handler
     public function generateResponse()
     {
         $exception = $this->getException();
-        return sprintf("%s: %s in file %s on line %d%s\n",
-            get_class($exception),
-            $exception->getMessage(),
-            $exception->getFile(),
-            $exception->getLine(),
-            $this->getTraceOutput()
-        );
+
+        if(\services\config::get('debug.switch'))
+        {
+            $args = [
+                "%s: %s in file %s on line %d%s\n",
+                get_class($exception),
+                $exception->getMessage(),
+                $exception->getFile(),
+                $exception->getLine(),
+                $this->getTraceOutput()
+            ];
+        }
+        else
+        {
+            $args = ["%s: %s",get_class($exception),\services\config::get('debug.message') ? : $exception->getMessage()];
+        }
+
+        return call_user_func_array("sprintf",$args);
     }
 
     /**

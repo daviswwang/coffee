@@ -6,8 +6,13 @@ use coffee\exception\mysqlError;
 
 class db
 {
+
+    private static $db_pool = [];
+
     public static function connect($conf = 'default')
     {
+
+        if(isset(self::$db_pool[$conf])) return self::$db_pool[$conf];
 
         //得到对应数据库配置
         $set = config::get($conf,'database');
@@ -27,15 +32,21 @@ class db
 
                 $structure = new \NotORM_Structure_Convention($set['primary'],$set['foreign'],$table = '%s',$set['prefix']);
 
-                $db = new \NotORM($pdo , $structure);
+                self::$db_pool[$conf] = new \NotORM($pdo , $structure);
 
-                $db->jsonAsArray = true;
+                self::$db_pool[$conf]->jsonAsArray = true;
                 
                 break;
         }
 
-        if(!isset($db)) throw new mysqlError('new db object is error.');
+        if(!isset(self::$db_pool[$conf])) throw new mysqlError('new db object is error.');
 
-        return $db;
+        return self::$db_pool[$conf];
+    }
+
+    public static function disconnect($conf = 'default')
+    {
+        unset(self::$db_pool[$conf]);
+        return true;
     }
 }

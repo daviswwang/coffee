@@ -1,23 +1,12 @@
 <?php
 
-namespace services;
+namespace coffee;
 
 use coffee\exception\middlewareError;
 
 class middleware
 {
-    const BGR = 'BEFORE_GET_ROUTE';
-
-    const AGR = 'AFTER_GET_ROUTE';
-
-    const BEA = 'BEFORE_EXEC_APP';
-
-    const AEA = 'AFTER_EXEC_APP';
-
-    const BNF = 'BEFORE_NOT_FOUND';
-
-
-    private static $services = [
+    private $services = [
 
         'BEFORE_GET_ROUTE'  =>[],
 
@@ -31,28 +20,27 @@ class middleware
         
     ];
 
-    private static $enable = false;
+    private $enable = false;
 
-    public static function listen()
+    public function listen()
     {
-        //载入核心中间件
-        self::loadCoreMiddleware();
+        //注入服务
+        di()->setMiddleware($this);
 
-        //判断是否启用中间件
-        if(config::get('middleware') === true)
-        {
-            self::$services = array_merge_recursive(self::$services,config::get('middleware_config'));
-            self::$enable   = true;
-        }
+        //是否初始化中间件模块
+        if(\services\config::get('component.middleware') === false) return false;
 
-        return true;
+        //执行初始化中间件模块并监听
+        $this->services = array_merge_recursive($this->services,\services\config::get('','middleware'));
+        $this->enable   = true;
+        return $this->enable;
     }
 
-    public static function callback($type = self::BGR)
+    public function callback($type = '')
     {
-        if(!self::$services[$type] || self::$enable === false) return false;
+        if($this->enable === false || empty($this->services[$type])) return false;
 
-        array_walk(self::$services[$type],function($v,$k)
+        array_walk($this->services[$type],function($v,$k)
         {
             if(!class_exists($k)) throw new middlewareError("class $k is not exists.");
 
@@ -86,22 +74,6 @@ class middleware
                 raise($note , 600 );
             }
         });
-
-        return true;
-    }
-
-    private static function loadCoreMiddleware()
-    {
-        //是否载入防火墙配置
-        if(config::get('firewall') === true)
-        {
-            self::$services[self::BGR]["\\middleware\\firewall"] = [
-                'exec_func'=>'execute',
-                'conf_info'=>config::get('firewall_config'),
-                'throw_msg'=>'访问被禁止, Access forbid.',
-                'call_pass'=>'',
-            ];
-        }
 
         return true;
     }

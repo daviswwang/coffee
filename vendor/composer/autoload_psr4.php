@@ -7,8 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'services\\' => array($vendorDir . '/services'),
-    'middleware\\' => array($vendorDir . '/component/middleware'),
     'drives\\' => array($vendorDir . '/drives'),
+    'component\\' => array($vendorDir . '/component'),
     'coffee\\' => array($vendorDir . '/coffee'),
     'Whoops\\' => array($vendorDir . '/component/whoops/src/Whoops'),
 );

@@ -34,7 +34,9 @@ class container implements \ArrayAccess
             'loader'=>'\\coffee\\loader',
             'request'=>'\\coffee\\request',
             'response'=>'\\coffee\\response',
-            'reflection'=>'\\coffee\\reflection'
+            'reflection'=>'\\coffee\\reflection',
+            'parsing'=>'\\coffee\\parsing',
+            'output'=>'\\coffee\\output'
         ];
 
         foreach ($base as $k=>$v) $this->$k = $v;

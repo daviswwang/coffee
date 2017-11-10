@@ -12,15 +12,17 @@ class response
 
     public function listen()
     {
-        $this->app = di('request')->getApplication();
+        $this->app = di('request')->get_application();
         return $this;
     }
 
     public function run()
     {
-        middleware::callback(middleware::BEA);
-        $this->result = call_user_func([new $this->app(),di('request')->getAction()]);
-        middleware::callback(middleware::AEA);
+        //中间件组件 应用执行之前操作
+        di('middleware')->callback('BEFORE_EXEC_APP');
+        $this->result = call_user_func([new $this->app(),di('request')->get_action()]);
+        //中间件组件 应用执行之后操作
+        di('middleware')->callback('AFTER_EXEC_APP');
         
         return $this;
     }

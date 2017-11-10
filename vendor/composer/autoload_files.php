@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'beffea1976a700ab864ffc57cb873bc4' => $vendorDir . '/services/functions.php',
+    '232c0b404f8015c8e0ebb41d8d578fc6' => $vendorDir . '/functions.php',
 );

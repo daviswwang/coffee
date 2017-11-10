@@ -8,6 +8,6 @@ class _empty
 {
     public function index()
     {
-        raise(config::get('default.404.note'),404);
+        raise('file is not found.',404);
     }
 }

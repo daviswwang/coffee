@@ -36,7 +36,7 @@ class reflection
         {
             $attribute->setAccessible(true);
             $attribute->setValue($this->setObject,$val);
-            di()->set(parse::get_class_name_by_namespace($this->reflection->getName()),$this->setObject);
+            di()->set(di('parsing')->namespace_to_class($this->reflection->getName()),$this->setObject);
         }
         catch (\ReflectionException $e)
         {

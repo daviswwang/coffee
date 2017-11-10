@@ -1,87 +1,66 @@
 <?php
 
-use services\middleware;
-
 return [
-    //设为 true 将开启调式模式
-    'debug'=>true,
 
-    //此处设置后 全局都将启用api格式输出 json or xml 支持的format 值有 api html cli
-    'format'=>'api',
+    /*
+     * debug 配置
+     * @switch 是否开启调试 debug 模式
+     * @message 错误提示 当 debug 为 false 时生效 如果未设置则抛出捕捉到的message
+     * */
+    'debug'=>[
+        'switch'=>true,
+        'message'=>'系统发生异常!'
+    ],
 
-    //应用名称
-    'app_name'=>'test',
-
-    //项目目录
-    'app_directory'=>'app',
-    
-    //是否启用中间件功能 默认 true
-    'middleware'=>true,
-
-    //是否启用防火墙功能
-    'firewall'=>true,
-
-    //注册自定义命名空间
-    'namespace'=>[ ],
-
-    //默认配置
-    'default'=>[
-        'class'=>'index',
-        'action'=>'index',
-        
-        '404'=>[
-            'view'=>'',
-            'note'=>'404 file is not found.',
-            'class'=>'_empty',
-            'action'=>'index'
+    /* app 应用配置
+     * @name 应用名称 此名称必须与应用根目录文件夹名一致
+     * @mode 应用模式 可选模式 html/api/cli
+     * @dir  应用可执行文件目录名->class存放目录名
+     * @api  应用模式 api 下配置
+     * --- format 输出格式
+     * --- restriction_structure 输出结构体
+     *     --- code_name 代码名称
+     *     --- note_name 提示名称
+     *     --- data_name 数据体名称
+     * @default 应用执行必要的默认配置
+     * @namespace 自定义注册命令空间
+     * @autoload 自定义自动加载文件
+     * */
+    'app'=>[
+        'name'=>'test',
+        'mode'=>'api',
+        'dir'=>'app',
+        'api'=>[
+            'format'=>'json',
+            'structure'=>[
+                'code_name'=>'code',
+                'note_name'=>'note',
+                'data_name'=>'data'
+            ]
+        ],
+        'default'=>[
+            'app_class'=>'index',
+            'app_action'=>'index',
+            '404_class'=>'_empty',
+            '404_action'=>'index'
+        ],
+        'namespace'=>[
+            
+        ],
+        'autoload'=>[
+            
         ]
     ],
 
-    //api 配置
-    'api_config'=>[
-
-        //约束输出格式
-        'output'=>'json',
-
-        //约束输出结构体
-        'restriction_structure'=>[
-            'code_name'=>'code',
-            'note_name'=>'note',
-            'data_name'=>'data'
-        ]
+    /*
+     * component 组件配置控制组件的使用
+     * @middleware true 系统初始化则默认监听中间件模块 false 则反
+     * @route true 系统初始化则默认监听路由匹配模块 false 则反
+     * @firewall true 系统初始化启动防火墙模块 false 则反
+     * @desc
+     * */
+    'component'=>[
+        'middleware'=>false,
+        'route'=>false
     ],
-
-    //防火墙配置
-    'firewall_config'=>[
-        1,2,3
-    ],
-
-    //中间件配置
-    'middleware_config'=>[
-        //得到请求后立刻执行中间件
-        middleware::BGR=>[
-
-        ],
-
-        //解析完路由立刻执行中间件
-        middleware::AGR=>[
-
-        ],
-
-        //路由得到的应用执行之前执行
-        middleware::BEA=>[
-
-        ],
-
-        //路由得到的应用执行之后执行
-        middleware::AEA=>[
-
-        ],
-
-        //触发NotFound之前执行
-        middleware::BNF=>[
-
-        ]
-    ],
-
 ];

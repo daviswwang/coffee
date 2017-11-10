@@ -227,6 +227,14 @@ class PrettyPageHandler extends Handler
             ],
         ];
 
+        if(\services\config::get('debug.switch') === false)
+        {
+            $vars['tables'] = [];
+            $vars['frames'] = [];
+            $vars['has_frames'] = 0;
+            $vars['message'] = \services\config::get('debug.message') ? : $vars['message'];
+        }
+
         if (isset($customCssFile)) {
             $vars["stylesheet"] .= file_get_contents($customCssFile);
         }
