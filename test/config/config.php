@@ -56,7 +56,6 @@ return [
      * component 组件配置控制组件的使用
      * @middleware true 系统初始化则默认监听中间件模块 false 则反
      * @route true 系统初始化则默认监听路由匹配模块 false 则反
-     * @firewall true 系统初始化启动防火墙模块 false 则反
      * @desc
      * */
     'component'=>[

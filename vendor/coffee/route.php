@@ -23,7 +23,7 @@ class route
 
     private function check_is_match_route()
     {
-        if(empty($this->config))
+        if(empty($this->config) || config::get('component.route') === false)
             $params = $this->parse_path_info(di('request')->get_path_info());
         else
         {
