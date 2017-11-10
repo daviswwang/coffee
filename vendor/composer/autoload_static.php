@@ -49,7 +49,7 @@ class ComposerStaticInit6a6d632d67e4f39705df4f1767d24dc8
         ),
         'Whoops\\' => 
         array (
-            0 => __DIR__ . '/..' . '/component/whoops/src/Whoops',
+            0 => __DIR__ . '/..' . '/component/abnormal',
         ),
     );
 

@@ -10,5 +10,5 @@ return array(
     'drives\\' => array($vendorDir . '/drives'),
     'component\\' => array($vendorDir . '/component'),
     'coffee\\' => array($vendorDir . '/coffee'),
-    'Whoops\\' => array($vendorDir . '/component/whoops/src/Whoops'),
+    'Whoops\\' => array($vendorDir . '/component/abnormal'),
 );

@@ -25,7 +25,7 @@
       "coffee\\": "vendor/coffee",
       "services\\" : "vendor/services",
       "component\\" : "vendor/component",
-      "Whoops\\": "vendor/component/whoops/src/Whoops",
+      "Whoops\\": "vendor/component/abnormal",
       "drives\\":"vendor/drives"
     }
   }
