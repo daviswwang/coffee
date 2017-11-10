@@ -7,9 +7,9 @@ return[
         'database'  => '',
         'username'  => '',
         'password'  => '',
-        'port'      => 33061,
+        'port'      => 3306,
         'charset'   => 'utf8',
-        'prefix'    => 'chain_',
+        'prefix'    => '',
         'primary'   => 'id',
         'foreign'   => '%s_id'
     ]
