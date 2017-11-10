@@ -2,8 +2,6 @@
 
 namespace test\app;
 
-use services\config;
-
 class _empty
 {
     public function index()
