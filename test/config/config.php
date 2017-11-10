@@ -8,7 +8,7 @@ return [
      * @message 错误提示 当 debug 为 false 时生效 如果未设置则抛出捕捉到的message
      * */
     'debug'=>[
-        'switch'=>false,
+        'switch'=>true,
         'message'=>'系统发生异常!'
     ],
 
@@ -25,6 +25,7 @@ return [
      * @default 应用执行必要的默认配置
      * @namespace 自定义注册命令空间
      * @autoload 自定义自动加载文件
+     * @xss XSS过滤规则配置
      * */
     'app'=>[
         'name'=>'test',
@@ -48,6 +49,9 @@ return [
             
         ],
         'autoload'=>[
+            
+        ],
+        'xss'=>[
             
         ]
     ],
