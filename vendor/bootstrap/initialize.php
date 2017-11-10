@@ -18,10 +18,10 @@ $auto = require_once C_VENDOR."autoload.php";
 di('request')->register($auto);
 
 //中间件初始化机制
-(new \coffee\middleware())->listen();
+(new \coffee\middleware)->listen();
 
 //初始化路由模块
-(new \coffee\route($auto))->listen();
+(new \coffee\route)->listen();
 
 //监听响应
 return di('response')->listen();
