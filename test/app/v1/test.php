@@ -8,9 +8,9 @@ class test
 {
     public function index()
     {
-        $a = db::connect()->table('user')->where('id',1)->fetchRow();
-
-        print_r($a);
-        raise('this page is test/index.');
+        return db::connect()->table('user')->where('id',1)->fetchRow();
+//
+//        print_r($a);
+//        raise('this page is test/index.');
     }
 }

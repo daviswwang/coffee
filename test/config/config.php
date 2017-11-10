@@ -58,12 +58,14 @@ return [
 
     /*
      * component 组件配置控制组件的使用
-     * @middleware true 系统初始化则默认监听中间件模块 false 则反
-     * @route true 系统初始化则默认监听路由匹配模块 false 则反
+     * @middleware true 允许使用中间件组件功能 false 则反
+     * @route true 允许使用路由匹配组件功能 false 则反
+     * @xss true 允许使用XSS组件功能， false 则反
      * @desc
      * */
     'component'=>[
         'middleware'=>false,
-        'route'=>false
+        'route'=>false,
+        'xss'=>false
     ],
 ];
