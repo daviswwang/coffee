@@ -58,7 +58,6 @@ class route
                 {
                     $class  = $path[0];
                     $action = config::get('app.default.app_action');
-                    $namespace .= $class."\\";
                 }
             }
             else
