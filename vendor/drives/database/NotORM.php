@@ -63,6 +63,15 @@ class NotORM extends NotORM_Abstract {
 		$this->structure = $structure;
 		$this->cache = $cache;
 	}
+
+    /** Get table data to use as $db->table[1]
+     * @param string
+     * @return NotORM_Result
+     */
+	function table($table)
+    {
+        return new NotORM_Result($this->structure->getReferencingTable($table, ''), $this, true);
+    }
 	
 	/** Get table data to use as $db->table[1]
 	* @param string
