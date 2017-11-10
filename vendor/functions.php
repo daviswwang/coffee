@@ -28,7 +28,7 @@ function raise($note = '' , $code = 0 , $data = [])
         }
     }
 
-    if($code > 199 && $code < 599) header('Status:'.$code);
+    if($code > 200 && $code < 599) header('Status:'.$code);
 
     exit;
 }
