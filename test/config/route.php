@@ -1,4 +1,6 @@
 <?php
 
-return [];
+return [
+    '/a'=>'/v1/test'
+];
 

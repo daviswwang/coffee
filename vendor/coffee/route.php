@@ -2,6 +2,7 @@
 
 namespace coffee;
 
+use coffee\exception\routeError;
 use services\config;
 
 class route
@@ -26,7 +27,16 @@ class route
             $params = $this->parse_path_info(di('request')->get_path_info());
         else
         {
-            //Todo...
+            //是否安装Route组件
+            if(!class_exists("\\component\\route\\route"))
+                throw new routeError("please install route component.");
+
+            //得到解析后path_info并开始解析path_info
+            $params = $this->parse_path_info(
+                (new \component\route\route($this->config))->match(
+                    di('request')->get_path_info()
+                )
+            );
         }
 
         //中间件操作 得到路由之后操作
