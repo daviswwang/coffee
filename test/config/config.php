@@ -8,7 +8,7 @@ return [
      * @message 错误提示 当 debug 为 false 时生效 如果未设置则抛出捕捉到的message
      * */
     'debug'=>[
-        'switch'=>true,
+        'switch'=>false,
         'message'=>'系统发生异常!'
     ],
 

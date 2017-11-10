@@ -18,6 +18,6 @@ class route
             return $this->config[$request_path_info];
 
         
-        return '';
+        return $request_path_info;
     }
 }
