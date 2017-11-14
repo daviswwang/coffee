@@ -83,7 +83,7 @@ class input
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
-    public function ip($proxy = false)
+    public static function ip($proxy = false)
     {
         if ($proxy) {
             $ip = empty($_SERVER["HTTP_X_FORWARDED_FOR"]) ? (empty($_SERVER["HTTP_CLIENT_IP"]) ? NULL : $_SERVER["HTTP_CLIENT_IP"]) : $_SERVER["HTTP_X_FORWARDED_FOR"];
@@ -107,7 +107,7 @@ class input
     // @param string $allow       允许哪些 referrer 过来请求
     // @return true / false       在允许的列表内返回true
 
-    public function referrer($restrict = true, $allow = '')
+    public static function referrer($restrict = true, $allow = '')
     {
         $referrer = isset($_SERVER['HTTP_REFERER']) ? trim($_SERVER['HTTP_REFERER']) : null;
         if (empty($referrer)) { return true;    } /* 空的 referer 直接允许 */
@@ -137,7 +137,7 @@ class input
 
         if(is_array($data))
             return di('xss_filter')->purifyArray($data);
-        
+
         return di('xss_filter')->purify($data);
     }
 
@@ -156,7 +156,7 @@ class input
                 return self::xss_filter($data[$key]);
             return $data[$key];
         }
-        
+
         return $default;
     }
 }

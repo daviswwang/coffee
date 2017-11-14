@@ -39,11 +39,11 @@ class route
             );
         }
 
-        //中间件操作 得到路由之后操作
-        di('middleware')->callback('AFTER_GET_ROUTE');
-
         //解析结果注入请求实例
         di('reflection')->object(di('request'))->setPrivateAttribute('service',$params);
+
+        //中间件操作 得到路由之后操作
+        di('middleware')->callback('AFTER_GET_ROUTE');
     }
 
     private function parse_path_info($path_info = '')

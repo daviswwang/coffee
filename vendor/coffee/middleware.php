@@ -33,6 +33,10 @@ class middleware
         //执行初始化中间件模块并监听
         $this->services = array_merge_recursive($this->services,\services\config::get('','middleware'));
         $this->enable   = true;
+
+        //重新注入服务
+        di()->setMiddleware($this);
+
         return $this->enable;
     }
 

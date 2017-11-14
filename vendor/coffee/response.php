@@ -2,8 +2,6 @@
 
 namespace coffee;
 
-use services\middleware ;
-
 class response
 {
     private $app = NULL;
