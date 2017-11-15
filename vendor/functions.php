@@ -11,10 +11,10 @@ function raise($note = '' , $code = 0 , $data = [])
 {
     if(config::get('app.mode') == 'html')
     {
-        if(\Whoops\Util\Misc::isAjaxRequest())
+        if(\services\input::is_ajax())
             echo di('output')->json($note , $code , $data);
-//        else
-//            view()->assign()->display();
+        else
+            echo 'does not support html.';
     }
     else
     {
@@ -32,3 +32,6 @@ function raise($note = '' , $code = 0 , $data = [])
 
     exit;
 }
+
+
+

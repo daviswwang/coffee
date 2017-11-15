@@ -22,22 +22,17 @@ class db
         switch($set['driver'])
         {
             case 'mysql':
-                $pdo = new \PDO(
+                $db = new \drives\database\LessQL\Database(new \PDO(
                     "{$set['driver']}:host={$set['host']};port={$set['port']};dbname={$set['database']};charset={$set['charset']}",
                     $set['username'],
                     $set['password']
-                );
+                ));
 
-                require_once C_VENDOR."drives/database/NotORM.php";
-
-                $structure = new \NotORM_Structure_Convention($set['primary'],$set['foreign'],$table = '%s',$set['prefix']);
-
-                $db = new \NotORM($pdo , $structure);
-
-                $db->jsonAsArray = true;
+                $db->setRewrite( function( $table ) use ($set) {
+                    return $set['prefix'] . $table;
+                } );
 
                 self::$db_pool[$conf] = $db;
-
                 break;
         }
 

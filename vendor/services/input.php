@@ -15,7 +15,14 @@ class input
 
     public static function post($key = '' , $default = '' , $xss_filter = false)
     {
-        return self::_deal_data($key,$default,$xss_filter,$_POST);
+        if(request::get_header('content_type') == 'application/json')
+        {
+            $data = json_decode(file_get_contents("php://input"),true);
+        }
+        else
+            $data = $_POST;
+
+        return self::_deal_data($key,$default,$xss_filter,$data);
     }
 
     public static function any($key = '' , $default = '' , $xss_filter = false)
@@ -129,6 +136,9 @@ class input
         if(!file_exists($xss_path))
             throw new requestError("please install xss component.");
 
+        if(config::get('component.xss') === false)
+            throw new requestError("please set config on true by component->xss");
+
         if(!isset(di()['xss_filter']))
         {
             require_once $xss_path;
@@ -137,7 +147,7 @@ class input
 
         if(is_array($data))
             return di('xss_filter')->purifyArray($data);
-
+        
         return di('xss_filter')->purify($data);
     }
 
@@ -156,7 +166,7 @@ class input
                 return self::xss_filter($data[$key]);
             return $data[$key];
         }
-
+        
         return $default;
     }
 }

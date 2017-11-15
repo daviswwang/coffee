@@ -3,6 +3,7 @@
 namespace coffee;
 
 use coffee\exception\middlewareError;
+use services\config;
 
 class middleware
 {
@@ -26,7 +27,7 @@ class middleware
     {
         //注入服务
         di()->setMiddleware($this);
-
+        
         //是否初始化中间件模块
         if(\services\config::get('component.middleware') === false) return false;
 

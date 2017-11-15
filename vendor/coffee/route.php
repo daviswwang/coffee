@@ -38,7 +38,7 @@ class route
                 )
             );
         }
-
+        
         //解析结果注入请求实例
         di('reflection')->object(di('request'))->setPrivateAttribute('service',$params);
 

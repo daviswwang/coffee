@@ -3,6 +3,7 @@
 namespace coffee;
 
 use coffee\exception\requestError;
+use services\config;
 
 class request extends container
 {
@@ -34,21 +35,14 @@ class request extends container
 
     public function get_path_info()
     {
-        if(isset($_SERVER['PATH_INFO']) && !empty($_SERVER['PATH_INFO']))
-        {
-            $path_info = $_SERVER['PATH_INFO'];
-        }
-        elseif(isset($_SERVER['PHP_SELF']) && !empty($_SERVER['PHP_SELF']))
-        {
-            $path_info = $_SERVER['PHP_SELF'];
-        }
-        else
-        {
-            $path_info = rtrim(strstr($_SERVER['REQUEST_URI'],'?',true),'?');
-        }
+        $path_info = \services\request::get_server('request_uri');
 
-        if(empty($path_info))
+        if(empty($path_info) || $path_info == '/')
             $path_info = '/';
+        elseif(stripos($path_info,'?'))
+        {
+            $path_info = rtrim(strstr($path_info,'?',true),'?');
+        }
 
         return $path_info;
     }

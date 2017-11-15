@@ -2,6 +2,8 @@
 
 namespace coffee;
 
+use services\request;
+
 class response
 {
     private $app = NULL;
@@ -18,7 +20,7 @@ class response
     {
         //中间件组件 应用执行之前操作
         di('middleware')->callback('BEFORE_EXEC_APP');
-        $this->result = call_user_func([new $this->app(),di('request')->get_action()]);
+        $this->result = call_user_func([new $this->app(),request::get_action()]);
         //中间件组件 应用执行之后操作
         di('middleware')->callback('AFTER_EXEC_APP');
         
@@ -27,6 +29,6 @@ class response
 
     public function send()
     {
-        if($this->result) raise('success',0,$this->result);
+        raise('success',0,$this->result);
     }
 }

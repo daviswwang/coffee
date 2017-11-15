@@ -3,7 +3,7 @@
 //定义基础信息
 define('C_ROOT',dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR);
 define('C_VENDOR',dirname(__DIR__).DIRECTORY_SEPARATOR);
-define('C_ITEM',$_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR);
+defined('C_ITEM') ? : define('C_ITEM',$_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR);
 define('C_NAME','coffee');
 define('C_VERSION','V1.0 beta');
 define('C_EXT','.php');

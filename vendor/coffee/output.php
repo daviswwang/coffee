@@ -8,6 +8,8 @@ class output
 {
     private static function restrictionStructure($code = 0 , $note = '', $data = [])
     {
+        ob_clean();
+
         $restrictionStructure = config::get('app.api.structure') ? : [
             'code_name'=>'code',
             'note_name'=>'note',
