@@ -178,7 +178,7 @@ class Row implements \ArrayAccess, \IteratorAggregate, \JsonSerializable {
 
 		}
 
-		return $this[ $primary ];
+		return $primary ? : $this[$primary];
 
 	}
 
