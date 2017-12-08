@@ -93,6 +93,19 @@ class http
             curl_setopt($ch, CURLOPT_COOKIE, $options['COOKIE']);
         }
 
+        if(!empty($options['SSLCERT']))
+        {
+            // curl_setopt($ch,CURLOPT_SSLCERTTYPE,'PEM');
+            curl_setopt($ch,CURLOPT_SSLCERT, $options['SSLCERT']);
+            // 默认格式为PEM，可以注释
+        }
+
+        if(!empty($options['SSLKEY']))
+        {
+            // curl_setopt($ch,CURLOPT_SSLKEYTYPE,'PEM');
+            curl_setopt($ch,CURLOPT_SSLKEY, $options['SSLKEY']);
+        }
+
         // POST请求
         // 注意：这里默认GET请求的参数附带在URL里，如果直接使用http::curl()方法，并且传data参数，会触发POST请求
         if(!empty($data)) {

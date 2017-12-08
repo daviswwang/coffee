@@ -131,7 +131,7 @@ class input
 
     public static function xss_filter($data)
     {
-        $xss_path = C_VENDOR."component".DIRECTORY_SEPARATOR.'xss'.DIRECTORY_SEPARATOR.'HTMLPurifier.auto.php';
+        $xss_path = C_COMPONENT.'xss'.DIRECTORY_SEPARATOR.'HTMLPurifier.auto.php';
 
         if(!file_exists($xss_path))
             throw new requestError("please install xss component.");

@@ -2,13 +2,18 @@
 
 namespace coffee;
 
+use services\config;
+use services\input;
 use services\request;
+use services\view;
 
 class response
 {
     private $app = NULL;
 
     private $result = NULL;
+
+    private $obj = NULL;
 
     public function listen()
     {
@@ -20,7 +25,20 @@ class response
     {
         //中间件组件 应用执行之前操作
         di('middleware')->callback('BEFORE_EXEC_APP');
-        $this->result = call_user_func([new $this->app(),request::get_action()]);
+
+        $object = new $this->app();
+        $action = request::get_action();
+
+        if(!method_exists($object,$action))
+        {
+            $app = "\\".(config::get('app.name'))."\\".(config::get('app.dir'))."\\".config::get('app.default.404_class');
+            $object = new $app();
+            $action = config::get('app.default.404_action');
+        }
+
+        $this->obj = $object;
+
+        $this->result = call_user_func([$object,$action]);
         //中间件组件 应用执行之后操作
         di('middleware')->callback('AFTER_EXEC_APP');
         
@@ -29,6 +47,16 @@ class response
 
     public function send()
     {
-        raise('success',0,$this->result);
+        if(config::get('app.mode') == 'api')
+            raise('success',0,$this->result);
+        elseif(
+            config::get('app.mode') == 'html' &&
+            config::get('app.view.autoload') &&
+            !input::is_ajax() &&
+            request::get_class() != config::get('app.default.404_class') &&
+            method_exists($this->obj,request::get_action())
+        )
+            view::display(request::get_class().'/'.request::get_action());
+
     }
 }

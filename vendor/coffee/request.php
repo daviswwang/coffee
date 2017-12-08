@@ -12,8 +12,10 @@ class request extends container
 
     public function register($obj = NULL)
     {
-        $name = basename(rtrim(str_replace("\\",'/',C_ITEM),'/'))."\\";
-        $namespace = [$name=>C_ITEM];
+        //设置时区
+        date_default_timezone_set(config::get('app.default.app_timezone'));
+
+        $namespace = [config::get('app.name')."\\"=>C_ITEM];
 
         if(!($configNamespace = \services\config::get('app.namespace')))
         {
@@ -36,6 +38,19 @@ class request extends container
     public function get_path_info()
     {
         $path_info = \services\request::get_server('request_uri');
+
+        //过滤
+        if(strpos($path_info,config::get('app.default.inlet_file')))
+        {
+            $path_info = str_replace('/'.config::get('app.default.inlet_file'),'',$path_info);
+        }
+
+        //伪静态
+        $suffix = '.'.ltrim(config::get('app.view.suffix'),'.');
+        if(strpos($path_info,$suffix))
+        {
+            $path_info = str_replace($suffix,'',$path_info);
+        }
 
         if(empty($path_info) || $path_info == '/')
             $path_info = '/';
