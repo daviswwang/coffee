@@ -9,7 +9,7 @@ return [
      * */
     'debug'=>[
         'switch'=>true,
-        'message'=>'系统发生异常!'
+        'message'=>'系统异常!'
     ],
 
     /* app 应用配置
@@ -28,8 +28,9 @@ return [
      * @xss XSS过滤规则配置
      * */
     'app'=>[
-        'name'=>'test',
-        'mode'=>'api',
+        'name'=>'ls',
+        'mode'=>'html',
+        'path_mode'=>'',
         'dir'=>'app',
         'api'=>[
             'format'=>'json',
@@ -40,6 +41,8 @@ return [
             ]
         ],
         'default'=>[
+            'inlet_file'=>'index.php',
+            'app_timezone'=>'PRC',
             'app_class'=>'index',
             'app_action'=>'index',
             '404_class'=>'_empty',
@@ -53,6 +56,11 @@ return [
         ],
         'xss'=>[
             
+        ],
+        'view'=>[
+            'path'=>'',
+            'autoload'=>true,
+            'suffix'=>'.shtml'
         ]
     ],
 
@@ -65,7 +73,7 @@ return [
      * */
     'component'=>[
         'middleware'=>false,
-        'route'=>false,
+        'route'=>true,
         'xss'=>false
     ],
 ];
