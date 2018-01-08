@@ -45,8 +45,17 @@ class response
         return $this;
     }
 
-    public function send()
+    public function raise()
     {
+        $res = $this->result;
+        di('reflection')->object(di('response'))->setPrivateAttribute('result',NULL);
+        return $res ? : false;
+    }
+
+    public function send($return = false)
+    {
+        if($return) return $this->result;
+
         if(config::get('app.mode') == 'api')
             raise('success',0,$this->result);
         elseif(

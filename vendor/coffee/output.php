@@ -8,7 +8,7 @@ class output
 {
     private static function restrictionStructure($code = 0 , $note = '', $data = [])
     {
-        ob_clean();
+        if(!defined('RUN_MODE')) ob_clean();
 
         $restrictionStructure = config::get('app.api.structure') ? : [
             'code_name'=>'code',
@@ -48,9 +48,9 @@ class output
         return $this->addDataToNode($node, $this->restrictionStructure($code,$note,$data))->asXML();
     }
 
-    public function json($note = 'success' , $code = 0 , $data = [])
+    public function json($note = 'success' , $code = 0 , $data = [], $options = 0)
     {
-        return json_encode($this->restrictionStructure($code,$note,$data));
+        return json_encode($this->restrictionStructure($code,$note,$data), $options);
     }
 
     public function error( $code = 500 ,  $note = 'error.' , $data = [])

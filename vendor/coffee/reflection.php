@@ -44,5 +44,18 @@ class reflection
         }
     }
 
+    public function invokePrivateFunction( $function_name = '' , $params = NULL )
+    {
+        $this->reflection->newInstance();
+
+        $method = $this->reflection->getmethod($function_name);
+
+        $method->setAccessible(true);
+
+        if(is_array($params))
+            return call_user_func_array([$method,'invoke'],$params);
+        else
+            return call_user_func([$method,'invoke'],$params);
+    }
 
 }

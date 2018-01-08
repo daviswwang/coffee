@@ -28,6 +28,11 @@ class container implements \ArrayAccess
         return static::$instance;
     }
 
+    public static function destruction()
+    {
+        static::$instance = NULL;
+    }
+
     public function loadBase()
     {
         $base = [

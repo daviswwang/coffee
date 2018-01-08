@@ -10,4 +10,13 @@ class parsing
             return basename(str_replace('\\','/',$str));
         return basename($str);
     }
+
+    public function object_to_array($object)
+    {
+        $arr = [];
+
+        foreach ($object as $k=>$o) $arr[$k] = $o;
+
+        return $arr;
+    }
 }
