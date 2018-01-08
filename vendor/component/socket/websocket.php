@@ -60,6 +60,8 @@ class websocket
         $this->_log("socket connect success by fd : {$request->fd}...");
 
         $socket->push($request->fd,raise('connect successful.'));
+
+        di()->destruction();
     }
 
     public function _bind_message( $socket , $frame )
