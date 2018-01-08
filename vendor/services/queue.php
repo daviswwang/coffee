@@ -13,7 +13,7 @@ class queue
         if(isset(self::$queue_pool[$conf])) return self::$queue_pool[$conf];
 
         //得到队列
-        $queue = new \drives\queue\memcache(config::get($conf,'queue'));
+        $queue = new \component\queue\memcache(config::get($conf,'queue'));
 
         self::$queue_pool[$conf] = $queue;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace drives\queue;
+namespace component\queue;
 
 use coffee\exception\cacheError;
 use services\cache;
