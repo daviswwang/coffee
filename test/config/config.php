@@ -9,7 +9,7 @@ return [
      * */
     'debug'=>[
         'switch'=>true,
-        'message'=>'系统异常!'
+        'message'=>'系统异常! '
     ],
 
     /* app 应用配置
