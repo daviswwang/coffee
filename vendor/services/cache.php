@@ -35,7 +35,7 @@ class cache
 
     public static function disconnect($conf = 'default')
     {
-        unset(self::$db_pool[$conf]);
+        unset(self::$cache_pool[$conf]);
         return true;
     }
 }
