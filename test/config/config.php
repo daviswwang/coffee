@@ -28,8 +28,8 @@ return [
      * @xss XSS过滤规则配置
      * */
     'app'=>[
-        'name'=>'ls',
-        'mode'=>'html',
+        'name'=>'test',
+        'mode'=>'api',
         'path_mode'=>'',
         'dir'=>'app',
         'api'=>[

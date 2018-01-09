@@ -4,7 +4,7 @@ namespace coffee;
 
 use services\config;
 use services\input;
-use services\request;
+use services\request as r;
 use services\view;
 
 class response
@@ -27,7 +27,7 @@ class response
         di('middleware')->callback('BEFORE_EXEC_APP');
 
         $object = new $this->app();
-        $action = request::get_action();
+        $action = r::get_action();
 
         if(!method_exists($object,$action))
         {
@@ -62,10 +62,10 @@ class response
             config::get('app.mode') == 'html' &&
             config::get('app.view.autoload') &&
             !input::is_ajax() &&
-            request::get_class() != config::get('app.default.404_class') &&
-            method_exists($this->obj,request::get_action())
+            r::get_class() != config::get('app.default.404_class') &&
+            method_exists($this->obj,r::get_action())
         )
-            view::display(request::get_class().'/'.request::get_action());
+            view::display(r::get_class().'/'.r::get_action());
 
     }
 }
