@@ -19,15 +19,12 @@
   },
   "autoload": {
     "files": [
-      "vendor/functions.php"
+      "vendor/Console/Function.php"
     ],
     "psr-4": {
-      "coffee\\": "vendor/coffee",
-      "services\\" : "vendor/services",
-      "component\\" : "vendor/component",
-      "Whoops\\": "vendor/component/abnormal",
-      "drives\\":"vendor/drives"
+      "Coffee\\": "vendor",
+      "Whoops\\": "vendor/Extension/Abnormal",
+      "services\\": "vendor/Services"
     }
   }
-
 }
