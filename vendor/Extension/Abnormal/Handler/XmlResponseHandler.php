@@ -6,6 +6,7 @@
 
 namespace Whoops\Handler;
 
+use Coffee\Console\Structural\Facade;
 use SimpleXMLElement;
 use Whoops\Exception\Formatter;
 
@@ -47,7 +48,13 @@ class XmlResponseHandler extends Handler
             ),
         ];
 
-        echo $this->toXml(di('output')->error($this->getException()->getCode() ? : 500,$this->getException()->getMessage(),$response));
+        echo $this->toXml(
+            Facade::getInstance()['ServicesOutput']->errorStructural(
+                $this->getException()->getCode() ? : 500,
+                $this->getException()->getMessage(),
+                $response
+            )
+        );
 
         return Handler::QUIT;
     }

@@ -16,12 +16,13 @@
  * +-------------------------------------------------------
  * */
 
-namespace Coffee\Console\Structural;
+namespace Coffee\Console\Frame;
 use \Whoops\Handler\XmlResponseHandler ;
 use \Whoops\Handler\JsonResponseHandler;
 use \Whoops\Handler\PrettyPageHandler;
 use \Whoops\Handler\PlainTextHandler;
 use \Whoops\Util\Misc;
+use \Coffee\Console\Structural\Facade;
 
 /* @class StructuralAbnormal
  * @desc  异常监听类
@@ -33,7 +34,7 @@ class Abnormal
     /* @func listen
      * @desc 异常监听
      * */
-    public static function listen()
+    public static function listen ()
     {
         if ( COFFEE_RUN_MODE == 'cli' )
             $mode = 'cli';
@@ -52,7 +53,12 @@ class Abnormal
         return ( new \Whoops\Run() )->pushHandler ( self::getHandle( $mode ) )->register();
     }
 
-    private static function getHandle( $mode )
+    /* @func getHandle
+     * @desc 根据不同运行模式获取不同的句柄
+     * @param $mode <运行模式>
+     * @return <Handle - Object>
+     * */
+    private static function getHandle ( $mode )
     {
         switch ( $mode )
         {
@@ -63,7 +69,7 @@ class Abnormal
                 $handle = new PlainTextHandler();
                 break;
             default:
-                $handle = Facade::getInstance()['ServicesConfig']->get('app.api.format') == 'xml'
+                $handle = Facade::getInstance()[ 'ServicesConfig' ]->get( 'app.api.format' ) == 'xml'
                     ? new XmlResponseHandler()
                     : new JsonResponseHandler();
                 break;

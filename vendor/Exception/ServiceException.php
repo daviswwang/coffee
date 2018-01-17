@@ -16,24 +16,22 @@
  * +-------------------------------------------------------
  * */
 
-namespace Coffee\Console\Service;
+namespace Coffee\Exception;
 
-/* @class Interpret
- * @desc  语言解析类
- * @job   为系统提供语言解析服务
+use services\interpret;
+use Throwable;
+
+/* @class ServiceException
+ * @desc  异常处理捕捉
  * */
-class Interpret
+class ServiceException extends \Exception
 {
 
-    /* @func msg
-     * @desc 解析语言
-     * @param $note <需要解析的语言>
-     * @return <string>
+    /* @func __construct
+     * @desc 处理捕捉到的异常
      * */
-    public function msg ( $note = '' )
+    public function __construct ( $message = "" , $code = 0 , Throwable $previous = null )
     {
-        
-        return $note;
-
+        parent::__construct ( interpret::msg ( $message ) , 800 + $code , $previous );
     }
 }

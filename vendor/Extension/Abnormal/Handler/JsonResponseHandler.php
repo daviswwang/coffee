@@ -6,6 +6,7 @@
 
 namespace Whoops\Handler;
 
+use Coffee\Console\Structural\Facade;
 use Whoops\Exception\Formatter;
 
 /**
@@ -73,7 +74,14 @@ class JsonResponseHandler extends Handler
         ];
       }
 
-        echo json_encode(di('output')->error($this->getException()->getCode() ? : 500,$this->getException()->getMessage(),$response), defined('JSON_PARTIAL_OUTPUT_ON_ERROR') ? JSON_PARTIAL_OUTPUT_ON_ERROR : 0);
+        echo json_encode(
+            Facade::getInstance()['ServicesOutput']->errorStructural(
+                $this->getException()->getCode(),
+                $this->getException()->getMessage(),
+                $response,
+                defined( 'JSON_PARTIAL_OUTPUT_ON_ERROR' ) ? JSON_PARTIAL_OUTPUT_ON_ERROR : 0
+            )
+        );
 
         return Handler::QUIT;
     }

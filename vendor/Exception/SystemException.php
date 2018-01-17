@@ -21,8 +21,15 @@ namespace Coffee\Exception;
 use services\interpret;
 use Throwable;
 
+/* @class SystemException
+ * @desc  异常处理捕捉
+ * */
 class SystemException extends \Exception
 {
+
+    /* @func __construct
+     * @desc 处理捕捉到的异常
+     * */
     public function __construct ( $message = "" , $code = 0 , Throwable $previous = null )
     {
         parent::__construct ( interpret::msg ( $message ) , 500 + $code , $previous );

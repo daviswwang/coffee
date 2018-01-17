@@ -60,11 +60,14 @@ class Container implements \ArrayAccess
      public function __construct ()
      {
          $AutoloadConsoleClassMap = [
-            'ServicesParsing'=>"\\Coffee\\Console\\Service\\Parsing",
-            'ServicesInterpret'=>"\\Coffee\\Console\\Service\\Interpret",
-            'ServicesConfig'=>"\\Coffee\\Console\\Service\\Config",
-            'ServicesRequest'=>"\\Coffee\\Console\\Http\\Request",
-            'Loader'=>"\\Coffee\\Console\\Frame\\Loader",
+            'ServicesParsing'   => "\\Coffee\\Console\\Service\\Parsing",
+            'ServicesInterpret' => "\\Coffee\\Console\\Service\\Interpret",
+            'ServicesConfig'    => "\\Coffee\\Console\\Service\\Config",
+            'ServicesOutput'    => "\\Coffee\\Console\\Service\\Output",
+            'ServicesRequest'   => "\\Coffee\\Console\\Http\\Request",
+            'ServicesResponse'  => "\\Coffee\\Console\\Http\\Response",
+            'Loader'            => "\\Coffee\\Console\\Frame\\Loader",
+            'Reflection'        => "\\Coffee\\Console\\Structural\\Reflection",
          ];
          
          array_walk ( $AutoloadConsoleClassMap , function ( $val , $set ) { $this->_injection ( $set , $val ); } );

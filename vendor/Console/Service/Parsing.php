@@ -36,6 +36,12 @@ class Parsing
 
     }
 
+    /* @func getConfig
+     * @desc 为Config文件提供解析服务
+     * @param $conf <解析值>
+     * @param $array <数据源>
+     * @return <string | array>
+     * */
     public function getConfig( $conf , $array )
     {
 
@@ -55,5 +61,22 @@ class Parsing
         }
 
         return $array;
+    }
+
+    /* @func namespaceToClassName
+     * @desc 命名空间转化为类名
+     * @return string
+     * */
+    public function namespaceToClassName ( $namespace = '' )
+    {
+
+        if ( !$namespace )
+
+            return $namespace;
+
+        if ( strstr( $namespace , '\\' ) )
+            return basename( str_replace( '\\' , '/' , $namespace ) );
+        
+        return basename( $namespace );
     }
 }

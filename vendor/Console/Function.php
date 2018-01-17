@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2018/1/9
- * Time: 20:17
- */
+
+if ( function_exists ( 'raise' ) )
+{
+    function raise ( $note = '' , $code = 0 , array $data = [] )
+    {
+        
+    }
+}
