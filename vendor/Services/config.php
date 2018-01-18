@@ -33,6 +33,9 @@ class config extends Facade
      * */
     public static function _getAccessObjectName()
     {
-        return implode('',array_map( 'ucfirst' , [ __NAMESPACE__ , 'config' ] ) );
+        return implode('',array_map( 'ucfirst' , [
+            __NAMESPACE__ ,
+            parsing::namespaceToClassName( __CLASS__ )
+        ] ) );
     }
 }

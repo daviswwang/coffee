@@ -18,8 +18,8 @@
 
 namespace Coffee\Console\Frame;
 
-use Coffee\Console\Structural\Facade;
-use Coffee\Exception\EventException;
+use \Coffee\Console\Structural\Facade;
+use \Coffee\Exception\EventException;
 
 /* @class Middleware
  * @desc  事件管理器
@@ -92,7 +92,9 @@ class Middleware
                     if ( is_array( $v[ 'conf_info' ] ) )
                         $nowMiddlewareObject = new $k ( $v[ 'conf_info' ] );
                     else
-                        $nowMiddlewareObject = new $k ( Facade::getInstance()['ServicesConfig']->get ( NULL , $v[ 'conf_info' ] ) );
+                        $nowMiddlewareObject = new $k (
+                            Facade::getInstance()['ServicesConfig']->get ( NULL , $v[ 'conf_info' ] )
+                        );
                 }
 
                 Facade::getInstance()[ $storageContainerName ] = $nowMiddlewareObject;
@@ -102,13 +104,19 @@ class Middleware
                 throw new EventException( "call to undefined function {$k}::{$v[ 'exec_func' ]}" );
 
             if ( empty( $v[ 'call_pass' ] ) )
-                $executeResponseResult = call_user_func( [ $nowMiddlewareObject , $v[ 'exec_func' ] ] );
+                $executeResponseResult = call_user_func(
+                    [ $nowMiddlewareObject , $v[ 'exec_func' ] ]
+                );
             else
             {
                 if ( is_array( $v[ 'call_pass' ] ) )
-                    $executeResponseResult = call_user_func_array( [ $nowMiddlewareObject , $v[ 'exec_func' ] ] , $v[ 'call_pass' ] );
+                    $executeResponseResult = call_user_func_array(
+                        [ $nowMiddlewareObject , $v[ 'exec_func' ] ] , $v[ 'call_pass' ]
+                    );
                 else
-                    $executeResponseResult = call_user_func( [ $nowMiddlewareObject , $v[ 'exec_func' ] ] , $v[ 'call_pass' ] );
+                    $executeResponseResult = call_user_func(
+                        [ $nowMiddlewareObject , $v[ 'exec_func' ] ] , $v[ 'call_pass' ]
+                    );
             }
 
             if ( $executeResponseResult !== true )

@@ -1,6 +1,6 @@
 <?php
 
-namespace drives\database\LessQL;
+namespace Coffee\Console\Drive\Database;
 
 /**
  * Database object wrapping a PDO instance

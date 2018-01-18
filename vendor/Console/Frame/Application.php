@@ -18,8 +18,8 @@
 
 namespace Coffee\Console\Frame;
 
-use Coffee\Console\Structural\Facade;
-use Coffee\Exception\FrameException;
+use \Coffee\Console\Structural\Facade;
+use \Coffee\Exception\FrameException;
 
 /* @class Application
  * @desc  应用类
@@ -32,7 +32,7 @@ class Application
      * @desc 可载入的服务
      * */
     private $_load = [
-        'config','interpret','parsing','request'
+        'config','interpret','parsing','request','http','input','cache','db','cookie','session','view'
     ];
 
     /* @attribute $_is_new

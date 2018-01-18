@@ -32,10 +32,10 @@ define ( 'COFFEE_VENDOR' , dirname ( __DIR__ ) . DIRECTORY_SEPARATOR );
 $_autoloadObjectFromComposer = include_once ( COFFEE_VENDOR . "autoload.php" );
 
 //解析当前执行模式
-define ( 'COFFEE_RUN_MODE' , \services\parsing::getNowRunMode ( ) );
+define ( 'COFFEE_RUN_CLI' , \services\parsing::runModeIsCli() );
 
 //设置应用执行目录
-if ( COFFEE_RUN_MODE == 'web' )
+if ( !COFFEE_RUN_CLI )
 
     define( 'COFFEE_APP_PATH' , \services\request::getServer( 'DOCUMENT_ROOT' ) . DIRECTORY_SEPARATOR );
 

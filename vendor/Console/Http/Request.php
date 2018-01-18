@@ -56,6 +56,24 @@ class Request
         return false;
     }
 
+    public function getClass()
+    {
+        if( isset( $this->service[ 'class' ] ) )
+
+            return $this->service[ 'class' ];
+
+        return false;
+    }
+
+    public function getAction()
+    {
+        if( isset( $this->service[ 'action' ] ) )
+
+            return $this->service[ 'action' ];
+
+        return false;
+    }
+
     /* @func getPathInfo
      * @desc 得到请求PATH_INFO
      * @return string

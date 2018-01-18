@@ -18,8 +18,8 @@
 
 namespace Coffee\Console\Frame;
 
-use Coffee\Console\Structural\Facade;
-use Coffee\Exception\FrameException;
+use \Coffee\Console\Structural\Facade;
+use \Coffee\Exception\FrameException;
 
 /* @class Route
  * @desc  路由处理类

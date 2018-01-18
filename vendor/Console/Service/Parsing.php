@@ -29,10 +29,10 @@ class Parsing
      * @desc 获取当前运行模式
      * @return string
      * */
-    public function getNowRunMode()
+    public function runModeIsCli()
     {
 
-        if( strpos ( strtolower ( PHP_SAPI ) , 'cli' ) ) return 'cli' ; else return 'web' ;
+        if( strpos ( strtolower ( PHP_SAPI ) , 'cli' ) ) return true; else return false;
 
     }
 

@@ -36,7 +36,7 @@ class Abnormal
      * */
     public static function listen ()
     {
-        if ( COFFEE_RUN_MODE == 'cli' )
+        if ( COFFEE_RUN_CLI )
             $mode = 'cli';
         else
             $mode = COFFEE_APP_MODE;

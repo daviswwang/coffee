@@ -20,11 +20,11 @@ namespace services;
 
 use Coffee\Console\Structural\Facade;
 
-/* @class interpret
- * @desc  服务模块-语言包类
- * @job   为系统提供语言解析
+/* @class view
+ * @desc  服务模块-模板渲染类
+ * @job   模板渲染
  * */
-class interpret extends Facade
+class view extends Facade
 {
 
     /* @func _getAccessObjectName

@@ -66,6 +66,7 @@ class Container implements \ArrayAccess
             'ServicesOutput'    => "\\Coffee\\Console\\Service\\Output",
             'ServicesRequest'   => "\\Coffee\\Console\\Http\\Request",
             'ServicesResponse'  => "\\Coffee\\Console\\Http\\Response",
+            'ServicesView'      => "\\Coffee\\Console\\Http\\View",
             'Loader'            => "\\Coffee\\Console\\Frame\\Loader",
             'Reflection'        => "\\Coffee\\Console\\Structural\\Reflection",
          ];
